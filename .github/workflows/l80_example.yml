@@ -39,13 +39,14 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ secrets.DOCKER_HUB_USERNAME }}/lab8:lab8
+          images: ${{ secrets.DOCKER_HUB_USERNAME }}/lab8
 
       - name: Build and push Docker image
         id: docker_build
         uses: docker/build-push-action@v3
         with:
           context: .
+          # target: deploy
           platforms: linux/amd64,linux/s390x,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
