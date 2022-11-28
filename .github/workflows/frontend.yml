@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-push-images:
-    name: Budowa i publikacja obrazw na repozytorium
+    name: Budowa i publikacja obrazu na repozytorium
     runs-on: ubuntu-latest
 
     steps:
@@ -27,9 +27,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./
-          file: ./dockerfile.v1
+          context: .
+          file: dockerfile.v1
           push: true
           tags: |
-            spg51/lab:ghfrontend1
+            ${{ secrets.DOCKER_HUB_USERNAME }}/lab8:ghfrontend1
           

@@ -41,13 +41,13 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./dockerfile.v1
+          file: dockerfile.v1
           platforms: linux/amd64,linux/arm64
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
           tags: |
-            spg51/lab:gh_lab80
+            ${{ secrets.DOCKER_HUB_USERNAME }}/lab8:gh_lab80
 
       - name: Move cache
         run: |
